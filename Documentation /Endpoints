@@ -1,0 +1,302 @@
+Customer: Login, Registration ,Cart manipulations( Add/remove/update products), Entering  private information, Get all orders, Get all products, Filter products, Chat with Manager
+
+Manager: Get list of all orders, Search order, Get Customer info, Chat with Customer, Add/Delete/Update products, Get list of products, Get product info, Get statistics
+
+Admin: All access to API-endpoints, Errors log, Add/Delete/Update users, Add/Delete/Update products, Get users, Get user, Get list of products, Get product.
+
+
+Customer:
+{
+    "/" — main page:
+        {
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+        }
+    "/login":
+        {
+            Success (Code 200)
+            Bad Request (Code 400) - Incorrect login credentials
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+        }
+    "/registration":
+        {
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid registration data
+            Server Error (Code 500) - Internal server error
+        }
+    "/cart":
+        {
+            Add Product: Success (Code 200)
+            Bad Request (Code 400) - Invalid product data
+            Not Found (Code 404) - Product not found
+            Server Error (Code 500) - Internal server error
+            Remove Product: Success (Code 200)
+            Bad Request (Code 400) - Invalid product data
+            Update Product: Success (Code 200)
+            Bad Request (Code 400) - Invalid product data
+        }
+    "/account":
+         {
+            Get Account Info: Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+            Update Account Info: Success (Code 200)
+            Bad Request (Code 400) - Invalid data
+         }
+    "/account/orders":
+         {
+            Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+         }
+    "/products":
+         {
+            Get All Products: Success (Code 200)
+            Bad Request (Code 400) - Invalid filter criteria
+            Server Error (Code 500) - Internal server error
+         }
+
+    "/products/{id}":
+          {
+            Success (Code 200)
+            Not Found (Code 404) - Product with specified ID not found
+          }
+    "/chat/new":
+         {
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid chat data
+            Server Error (Code 500) - Internal server error
+         }
+    "/chat/{id}":
+          {
+            Success (Code 200)
+            Not Found (Code 404) - Chat with specified ID not found
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+          }
+}
+Manager:
+{
+    "/" — main page:
+        {
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+        }
+    "/login":
+        {
+            Success (Code 200)
+            Bad Request (Code 400) - Incorrect login credentials
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+        }
+    "/registration":
+        {
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid registration data
+            Server Error (Code 500) - Internal server error
+        }
+    "/manager/products":
+        {
+        All Products:
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+        Add Product:
+           Success (Code 200)
+           Bad Request (Code 400) - Invalid product data
+           Server Error (Code 500) - Internal server error
+
+        }
+    "/manager/products/{id}":
+            {
+            Get Product info:
+                Success (Code 200)
+                Not Found (Code 404) - Product not found
+                Server Error (Code 500) - Internal server error
+            Delete Product:
+                Success (Code 200)
+                Not Found (Code 404) - Product not found
+                Server Error (Code 500) - Internal server error
+            Update Product:
+                Success (Code 200)
+                Bad Request (Code 400) - Invalid product data
+                Not Found (Code 404) - Product not found
+                Server Error (Code 500) - Internal server error
+            }
+    "/account":
+         {
+            Get Account Info: Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+            Update Account Info: Success (Code 200)
+            Bad Request (Code 400) - Invalid data
+         }
+    "/account/orders":
+         {
+            Success (Code 200)
+            Not Found (Code 404) - Order not found
+            Server Error (Code 500) - Internal server error
+         }
+    "/account/orders/{id}":
+         {
+            Success (Code 200)
+            Not Found (Code 404) - Customer not found
+            Server Error (Code 500) - Internal server error
+         }
+
+    "/account/customers/{id}":
+          {
+            Success (Code 200)
+            Not Found (Code 404) - Product with specified ID not found
+          }
+    "/account/statistics":
+           {
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+           }
+    "/chat/new":
+         {
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid chat data
+            Server Error (Code 500) - Internal server error
+         }
+    "/chat/{id}":
+          {
+            Success (Code 200)
+            Not Found (Code 404) - Chat with specified ID not found
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+          }
+}
+Admin:
+{
+    "/" — main page:
+        {
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+        }
+    "/login":
+        {
+            Success (Code 200)
+            Bad Request (Code 400) - Incorrect login credentials
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+        }
+    "/admin/api" — All access to API-endpoints
+        {
+            Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+        }
+    "/admin/users"
+        {
+        Get Users:
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+        Add User:
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid user data
+            Server Error (Code 500) - Internal server error
+
+        }
+    "/admin/users/{id}"
+        {
+        Update User:
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid user data
+            Not Found (Code 404) - User not found
+            Server Error (Code 500) - Internal server error
+        Delete User:
+            Success (Code 200)
+            Not Found (Code 404) - User not found
+            Server Error (Code 500) - Internal server error
+        }
+    "/admin/errors" — Errors log
+        {
+            Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+        }
+   "/admin/errors" — Errors log
+        {
+            Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+        }
+   "/admin/errors" — Errors log
+        {
+            Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+        }
+
+   "/manager/products":
+        {
+        All Products:
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+        Add Product:
+           Success (Code 200)
+           Bad Request (Code 400) - Invalid product data
+           Server Error (Code 500) - Internal server error
+
+        }
+   "/manager/products/{id}":
+        {
+        Get Product info:
+                Success (Code 200)
+                Not Found (Code 404) - Product not found
+                Server Error (Code 500) - Internal server error
+        Delete Product:
+                Success (Code 200)
+                Not Found (Code 404) - Product not found
+                Server Error (Code 500) - Internal server error
+        Update Product:
+                Success (Code 200)
+                Bad Request (Code 400) - Invalid product data
+                Not Found (Code 404) - Product not found
+                Server Error (Code 500) - Internal server error
+        }
+   "/account":
+         {
+         Get Account Info:
+            Success (Code 200)
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+         Update Account Info:
+            Update Account Info: Success (Code 200)
+            Bad Request (Code 400) - Invalid data
+         }
+   "/account/orders":
+         {
+            Success (Code 200)
+            Not Found (Code 404) - Order not found
+            Server Error (Code 500) - Internal server error
+         }
+   "/account/orders/{id}":
+         {
+            Success (Code 200)
+            Not Found (Code 404) - Customer not found
+            Server Error (Code 500) - Internal server error
+         }
+
+   "/account/customers/{id}":
+         {
+            Success (Code 200)
+            Not Found (Code 404) - Customer with specified ID not found
+         }
+   "/account/statistics":
+         {
+            Success (Code 200)
+            Server Error (Code 500) - Internal server error
+         }
+   "/chat/new":
+         {
+            Success (Code 200)
+            Bad Request (Code 400) - Invalid chat data
+            Server Error (Code 500) - Internal server error
+         }
+   "/chat/{id}":
+         {
+            Success (Code 200)
+            Not Found (Code 404) - Chat with specified ID not found
+            Unauthorized (Code 401) - Authentication failed
+            Server Error (Code 500) - Internal server error
+         }
+}
